@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-for="user in users" :key="user.id">
-      {{user}}
+    <div v-for="job in jobs" :key="job.id">
+      {{job.title}}
     </div>
   </div>
 </template>
@@ -13,18 +13,13 @@ export default {
   
   data() {
     return {
-      users : []
+      jobs : []
     }
   },
   created() {
-    var vm = this;
     fetchJobsList()
-    .then( function(response) {
-      vm.users = response.data;
-    })
-    .catch(function(error) {
-      console.log(error);
-    })
+    .then(response => this.jobs = response.data)
+    .catch(error => console.log(error));
   }
 }
 </script>

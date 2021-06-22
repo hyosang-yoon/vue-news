@@ -1,29 +1,30 @@
 <template>
   <div>
-    <div v-for="user in users" :key="user.id">{{user}}</div>
+    <div v-for="item in ask" :key="item.id"> {{item.title}} </div>
   </div>
 </template>
 
 
 <script>
-import {fetchNewsList} from '../api/index.js'
+import {fetchAskList} from '../api/index.js'
 
 export default {
   data() {
     return {
-      users: []
+      ask: []
     }
   },
   created() {
     var vm = this;
-    fetchNewsList()
-    .then (function(response) {
-      vm.users = response.data;
-    })
-    .catch (function(error) {
-      console.log(error)
-    })
-  }
+    fetchAskList()
+      .then (function(response) {
+        vm.ask = response.data;
+        console.log(vm.ask)
+      })
+      .catch (function(error) {
+        console.log(error)
+      });
+  },
 }
 </script>
 
