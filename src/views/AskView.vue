@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div v-for="item in askItems" :key="item.id"> {{item.title}} </div>
+    <p v-for="item in askItems" :key="item.id"> 
+      <a href="item.url">{{item.title}} </a>
+    </p>
   </div>
 </template>
 
