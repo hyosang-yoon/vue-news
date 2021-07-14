@@ -1,6 +1,10 @@
 <template>
   <div>
-    <p>
+    <user-profile :info='userInfo'>
+      <div slot='username'>{{userInfo.id}}</div>
+      <template slot='time'>{{userInfo.created}}</template>
+    </user-profile>
+    <!-- <p>
       name = {{userInfo.id}}
     </p>
     <p>
@@ -8,14 +12,17 @@
     </p>
     <p>
       created = {{userInfo.created}}
-    </p>
+    </p> -->
   </div>
 </template>
 
 <script>
   // import axios from 'axios';
-
+import UserProfile from '../components/UserProfile.vue'
   export default {
+    components: {
+      UserProfile
+    },
     computed: {
       userInfo() {
         return this.$store.state.user;
